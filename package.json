@@ -9,6 +9,7 @@
   "scripts": {
     "build": "tsc && chmod +x dist/index.js",
     "start": "pnpm run build && node dist/index.js",
+    "inspector": "pnpm dlx @modelcontextprotocol/inspector node dist/index.js",
     "watch": "tsc --watch"
   },
   "keywords": [],
@@ -19,7 +20,9 @@
     "node": ">=22.0.0"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@modelcontextprotocol/sdk": "^1.25.1",
+    "dotenv": "^17.2.3",
     "zod": "^4.2.1"
   },
   "devDependencies": {

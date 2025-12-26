@@ -1,10 +1,11 @@
-#!/usr/bin/env node
+import "dotenv/config";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
   getProjectContextInput,
   getProjectContextHandler,
 } from "./tools/getProjectContext.js";
+import { getDocUrlInput, getDocUrlHandler } from "./tools/fetchDocs.js";
 
 const server = new McpServer({
   name: "context-builder",
@@ -21,10 +22,20 @@ server.registerTool(
   getProjectContextHandler
 );
 
+server.registerTool(
+  "fetch_docs",
+  {
+    description:
+      "Fetch documentation URLs for a list of packages using the AI client capabilities.",
+    inputSchema: getDocUrlInput,
+  },
+  getDocUrlHandler
+);
+
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.info("Context Builder MCP Server running on stdio");
+  console.error("Context Builder MCP Server running on stdio");
 }
 
 main().catch((error) => {
