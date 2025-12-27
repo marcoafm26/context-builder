@@ -1,23 +1,33 @@
 {
-  "name": "context-builder",
+  "name": "@mabysz/context-builder",
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "bin": {
-    "context-builder": "./dist/index.js"
+    "context-builder": "dist/index.js"
   },
   "scripts": {
     "build": "tsc && chmod +x dist/index.js",
     "start": "pnpm run build && node dist/index.js",
     "inspector": "pnpm dlx @modelcontextprotocol/inspector node dist/index.js",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "prepublishOnly": "pnpm run build"
   },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
   "keywords": [],
-  "author": "",
+  "author": "Marco Aurélio",
   "license": "ISC",
   "packageManager": "pnpm@10.26.2",
   "engines": {
     "node": ">=22.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcoafm26/context-builder.git"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
