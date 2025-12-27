@@ -18,6 +18,7 @@ export async function getProjectContextHandler(args) {
             name: packageJson.name,
             version: packageJson.version,
             description: packageJson.description,
+            packageManager: packageJson.packageManager,
             dependencies: packageJson.dependencies || {},
             devDependencies: packageJson.devDependencies || {},
             scripts: packageJson.scripts || {},
